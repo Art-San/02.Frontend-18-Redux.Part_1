@@ -1,28 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client'
-import { pipe } from 'lodash/fp'
 
 const App = () => {
-  const x = 2
-  let y = 6
-  
-  const double = (number) => number * 2
-  const square = (number) => number * number
-  const half = (number) => number / y
-  console.log(half(12))
-  y = 2
-  console.log(half(12))
- 
-  const divider = (num2) => {
-    return function(num1) {
-     return num1 / num2
-    }
-  }
-  
-  const mathCalculate = pipe(double,  square, half, divider(3))
-  
+  const [state, setState] = useState('staring')
+  // setState((prevState) => ({...prevState, name: 'anjela'}))
+  const obj1 = { id: 2, name: 'Some', autor: {name: 'some2'} }
+  // const obj2 = { ...obj1} // true одинаковые ссылки obj1.autor === obj2.autor
+  const obj2 = { ...obj1, autor: { ...obj1.autor } } // false теперь разные ссылки obj1.autor === obj2.autor
+  console.log(obj1.autor === obj2.autor)
+  // console.log(obj2.autor.name)
 
-  return <h1>{mathCalculate(x)}</h1>
+  return <h1>{state}</h1>
   
 }
 
