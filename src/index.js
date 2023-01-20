@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client'
-import { compose, pipe } from 'lodash/fp'
+import { pipe } from 'lodash/fp'
 
 const App = () => {
   const x = 2
-  // const y = x * 2
-  // const z = y * y
+  let y = 6
+  
   const double = (number) => number * 2
   const square = (number) => number * number
-  const half = (number) => number / 2
-  // const divider = (num1, num2) => num1 / num2 // не работает
-
-  //Каррирование
+  const half = (number) => number / y
+  console.log(half(12))
+  y = 2
+  console.log(half(12))
+ 
   const divider = (num2) => {
     return function(num1) {
      return num1 / num2
