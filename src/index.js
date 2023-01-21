@@ -30,21 +30,35 @@ function createStore(reducer, initialState) {
   return {getState, dispatch}
 }
 
-const store = createStore(taskReduser, [{id: 1, description: 'Task 1', completed: false}])
+const store = createStore(taskReduser, [
+  {id: 1, description: 'Task 1', completed: false},
+  {id: 2, description: 'Task 2', completed: false}
+])
 
 const App = () => {
-  console.log('store.getState(', store.getState())
-  const completeTask = () => {
+  // console.log('store.getState(', )
+  const state = store.getState()
+
+  const completeTask = (taskId) => {
     store.dispatch({
       type: 'task/completed',
-      payload: { id: 1}
+      payload: { id: taskId}
     })
     console.log(store.getState())
   }
   return (
     <>
     <h1>App</h1>
-    <button onClick={completeTask}>Completed</button>
+    <ul>
+      {state.map((el) => (
+        <li key={el.id}>
+          <p>{el.description}</p>
+          <p> {`Comleted: ${el.completed}`}</p>
+          <button onClick={() => completeTask(el.id)}>Completed</button>
+          <hr/>
+        </li>
+      ))}
+    </ul>
     </>
   )
   
