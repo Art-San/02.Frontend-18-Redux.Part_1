@@ -1,16 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client'
-// import { createStore } from './store/createStore';
-// import { taskReduser } from './store/taskReducer';
-import * as actions from './store/actionTypes'
+import * as actions from './store/actions'
 import { initiateStore } from './store/store';
 
-// const initialState = [
-//   {id: 1, title: 'Task 1', completed: false},
-//   {id: 2, title: 'Task 2', completed: false}
-// ]
 
-// const store = createStore(taskReduser, initialState)
 
 const store = initiateStore()
 const App = () => {
@@ -23,17 +16,11 @@ const App = () => {
   }, [])
 
   const completeTask = (taskId) => {
-    store.dispatch({
-      type: actions.taskUpdated,
-      payload: { id: taskId, completed: true}
-    })
+    store.dispatch(actions.taskComplete(taskId))
   }
 
   const changeTitle = (taskId) => {
-    store.dispatch({
-      type: actions.taskUpdated,
-      payload: { id: taskId, title: `New title for ${taskId}`}
-    })
+    store.dispatch(actions.titleChenge(taskId))
   }
 
   return (
