@@ -1,6 +1,6 @@
 import { taskUpdated } from "./actionTypes";
 
-export function taskReduser(state, action) {
+export function taskReduser(state = [], action) {
     switch (action.type) {
         case taskUpdated: {
           const newArray = [...state]
@@ -12,7 +12,7 @@ export function taskReduser(state, action) {
         }
         
       default:
-        break;
+        return state
     }
     
   }
