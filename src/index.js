@@ -23,6 +23,10 @@ const App = () => {
     store.dispatch(actions.titleChenge(taskId))
   }
 
+  const deleteTask = (taskId) => {
+    store.dispatch(actions.taskDeleted(taskId))
+  }
+
   return (
     <>
     <h1>App</h1>
@@ -31,8 +35,15 @@ const App = () => {
         <li key={el.id}>
           <p>{el.title}</p>
           <p> {`Comleted: ${el.completed}`}</p>
-          <button onClick={() => completeTask(el.id)}>Completed</button>
-          <button onClick={() => changeTitle(el.id)}>Chsange Title</button>
+          <button onClick={() => completeTask(el.id)}>
+            Completed
+          </button>
+          <button onClick={() => changeTitle(el.id)}>
+            Chsange Title
+          </button>
+          <button onClick={() => deleteTask(el.id)}>
+            Delete
+          </button>
           <hr/>
         </li>
       ))}
