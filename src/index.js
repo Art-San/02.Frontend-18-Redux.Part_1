@@ -19,18 +19,32 @@ const App = () => {
       setState(store.getState())
     })
   }, [])
+  //------- вариант 1
+  // const completeTask = (taskId) => {
+  //   store.dispatch({
+  //     type: actions.taskUpdated,
+  //     payload: { id: taskId, completed: true }
+  //   })
+  // }
+
+  // const changeTitle = (taskId) => {
+  //   store.dispatch({
+  //     type: actions.taskUpdated,
+  //     payload: { id: taskId, title: `New title for ${taskId}` }
+  //   })
+  // }
 
   const completeTask = (taskId) => {
     store.dispatch({
-      type: actions.taskUpdated,
-      payload: { id: taskId, completed: true }
+      type: actions.taskCompleted,
+      payload: { id: taskId }
     })
   }
 
   const changeTitle = (taskId) => {
     store.dispatch({
       type: actions.taskUpdated,
-      payload: { id: taskId, title: `New title for ${taskId}` }
+      payload: { id: taskId }
     })
   }
 
