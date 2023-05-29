@@ -14,6 +14,13 @@ export function titleChenge(id) {
   }
 }
 
+export function taskDeleted(id) {
+  return {
+    type: actionsTypes.taskDeleted,
+    payload: { id }
+  }
+}
+
 // import * as actionsTypes from './actionTypes'
 
 // export function taskComplete(id) {
